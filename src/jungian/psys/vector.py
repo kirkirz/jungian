@@ -49,8 +49,10 @@ def vectorise(fn):
     try:
         proc = str(fn.process)
         att = str(fn.attitude)
-    except AttributeError:
-        raise TypeError(...)
+    except AttributeError as exc:
+        raise TypeError(
+            f"Expected Function or object with .process/.attitude, got {type(fn).__name__}"
+        ) from exc
     return Vector[f"{proc}{att}".upper()]
 
 

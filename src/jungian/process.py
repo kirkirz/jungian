@@ -4,7 +4,6 @@ process.py : Generic process object.
 
 from typing import Literal
 
-
 class Process:
     """Process class"""
 
