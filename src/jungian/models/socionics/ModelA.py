@@ -13,3 +13,11 @@ def model_a_stack(t: Type) -> tuple[Function, Function, Function, Function,
     p7 = switch_attitude(dom)
     p8 = switch_attitude(aux)
     return (p1, p2, p3, p4, p5, p6, p7, p8)
+
+def pos(t: Type, f: str | Function) -> int:
+    stack = model_a_stack(t)
+    return next(
+        i
+        for i, fn in enumerate(stack, start=1)
+        if repr(fn) == (f if isinstance(f, str) else repr(f))
+    )
