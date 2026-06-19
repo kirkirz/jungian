@@ -1,5 +1,5 @@
 """Dimensionality module"""
-# this is could to combinate with pos()
+# this combinates neatly with pos()
 # since you can tell which function corresponds to some IME in a sociotype
 
 # The dimensions are:
@@ -10,11 +10,12 @@
 # These weren't added to function output (for interface simplicity)
 def dim(function : int) -> str:
     """Calculate dimensionality of a function, given its position in Model A"""
-    if function == 1 or function == 8:
+    if function in (1, 8):
         return "4D"
-    if function == 2 or function == 7:
+    if function in (2, 7):
         return "3D"
-    if function == 3 or function == 6:
+    if function in (3, 6):
         return "2D"
-    if function == 4 or function == 5:
+    if function in (4, 5):
         return "1D"
+    raise ValueError(f"Invalid position: {function}. Must be 1-8.")
