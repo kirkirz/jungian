@@ -24,14 +24,6 @@ def is_dynamic(t: Type) -> bool:
     """Return True if the Type is Negativist"""
     return not is_static(t)
 
-def is_result(t: Type) -> bool:
-   """Return True if the Type is Result"""
-   return (t.s_n == "N") == (t.j_p == "p")
-
-def is_process(t: Type) -> bool:
-    """Return True if the Type is Process"""
-    return not is_result(t)
-
 # These should be fixed/verified by someone:
 # def is_result(t: Type) -> bool:
 #   """Return True if the Type is Result"""
