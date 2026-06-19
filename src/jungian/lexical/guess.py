@@ -1,58 +1,84 @@
-"""Guess function usage by lexical analysis
-It supports:
-1) Phrase matching with weights
-2) Word matching with weights
-"""
-
+"""Lexical analyzer"""
+import json
 import string
+from pathlib import Path
+
+FUNCTIONS = ["Ti", "Te", "Fi", "Fe", "Ni", "Ne", "Si", "Se"]
+
+
+def normalize_items(items):
+    """
+    Accepts:
+      - ["Ti", 2]  (JSON list form)
+      - ("Ti", 2)  (tuple form if manually constructed)
+      - "Ti"       (implicit weight 1)
+    Returns: list[tuple(func, weight)]
+    """
+    out = []
+    for item in items:
+        if isinstance(item, (list, tuple)) and len(item) == 2:
+            out.append((item[0], item[1]))
+        else:
+            out.append((item, 1))
+    return out
+
+
+def load_lexicon(path: str | Path) -> tuple[dict, dict]:
+    """Load lexicon and phrases from JSON file."""
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    lexicon = {
+        k.lower(): normalize_items(v)
+        for k, v in data.get("lexicon", {}).items()
+    }
+
+    phrases = {
+        k.lower(): normalize_items(v)
+        for k, v in data.get("phrases", {}).items()
+    }
+
+    return lexicon, phrases
 
 
 def guess(text: str, lexicon: dict, phrases: dict) -> dict[str, int]:
-    """The function to guess function usage"""
-    _scores = {name: 0 for name in ["Ti", "Te", "Fi", "Fe", "Ni", "Ne", "Si", "Se"]}
+    """
+    Hybrid heuristic scorer:
+    - fuzzy phrase matching (substring-based, robust)
+    - word-level lexicon scoring
+    """
+    scores = {f: 0 for f in FUNCTIONS}
+
     text_lower = text.lower()
 
-    # 1. Phrase matching
+    # single-pass punctuation cleanup
+    translator = str.maketrans("", "", string.punctuation)
+    clean_text = text_lower.translate(translator)
+
+    # 1. Phrase matching (FIXED: fuzzy, no regex brittleness)
     for phrase, mappings in phrases.items():
         if phrase in text_lower:
-            for item in mappings:
-                if isinstance(item, tuple):
-                    func, weight = item
-                    _scores[func] += weight
-                else:
-                    _scores[item] += 1
+            boost = 1
+
+            # optional reinforcement if punctuation doesn't break it
+            if phrase in clean_text:
+                boost += 1
+
+            for func, weight in mappings:
+                scores[func] += weight * boost
 
     # 2. Word-level scoring
-    translator = str.maketrans("", "", string.punctuation)
-    for word in text_lower.split():
-        clean_word = word.translate(translator)
-        if clean_word in lexicon:
-            for item in lexicon[clean_word]:
-                if isinstance(item, tuple):
-                    func, weight = item
-                    _scores[func] += weight
-                else:
-                    _scores[item] += 1
+    for word in clean_text.split():
+        if word in lexicon:
+            for func, weight in lexicon[word]:
+                scores[func] += weight
 
-    return {name: weight for name, weight in _scores.items() if weight > 0}
+    return {k: v for k, v in scores.items() if v > 0}
 
 
-# This is a demo don't treat it seriously yet :D
+def guess_from_file(text: str, path: str | Path) -> dict[str, int]:
+    """Guess from file""
+    lexicon, phrases = load_lexicon(path)
+    return guess(text, lexicon, phrases)
 
-LEXICON = {
-    "logic": [("Ti", 2)],
-    "analyze": [("Ti", 2)],
-    "efficient": [("Te", 2)],
-    "feel": [("Fi", 1), ("Fe", 1)],
-    "maybe": [("Ne", 1)],
-}
-
-PHRASES = {
-    "i think": [("Ti", 2)],
-    "it depends": [("Ne", 2)],
-    "on the other hand": [("Ne", 3)],
-    "i feel like": [("Fi", 2), ("Fe", 1)],
-}
-
-scores = guess("I think this is logical.", LEXICON, PHRASES)
-print(scores)
+print(guess_from_file("i think it depends", "lexicon.json"))

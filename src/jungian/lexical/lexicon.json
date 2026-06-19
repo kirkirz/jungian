@@ -1,0 +1,15 @@
+{
+    "lexicon": {
+        "logic": [["Ti", 2]],
+        "analyze": [["Ti", 2]],
+        "efficient": [["Te", 2]],
+        "feel": [["Fi", 1], ["Fe", 1]],
+        "maybe": [["Ne", 1]]
+    },
+    "phrases": {
+        "i think": [["Ti", 2]],
+        "it depends": [["Ne", 2]],
+        "on the other hand": [["Ne", 3]],
+        "i feel like": [["Fi", 2], ["Fe", 1]]
+    }
+}
