@@ -2,9 +2,9 @@
 
 from jungian import Type
 
-# Mapping from MBTI code → canonical Type
+# Mapping from MBTI code to canonical Type
 # It does so-called J/P switch
-# That means that rational introverts (j) are judgers (P)
+# That means that rational introverts (j) are perceivers (P)
 # and irrational introverts (p) are judgers (J)
 MBTI_MAP = {
     "ENTP": Type("E", "N", "T", "p"),
