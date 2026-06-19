@@ -8,4 +8,3 @@ def grant_stack(t: Type) -> tuple[Function, Function, Function, Function]:
     p3 = switch_attitude(switch_process(aux))
     p4 = switch_attitude(switch_process(dom))
     return (p1, p2, p3, p4)
-

@@ -4,12 +4,15 @@ process.py : Generic process object.
 
 from typing import Literal
 
+
 class Process:
     """Process class"""
 
     def __init__(self, symbol: Literal["N", "S", "T", "F"]):
         if symbol not in ("N", "T", "F", "S"):
-            raise ValueError(f"Invalid Process symbol: {symbol}. Must be 'N', 'T', 'F' or 'S'")
+            raise ValueError(
+                f"Invalid Process symbol: {symbol}. Must be 'N', 'T', 'F' or 'S'"
+            )
         self.symbol = symbol
 
     def __repr__(self) -> str:

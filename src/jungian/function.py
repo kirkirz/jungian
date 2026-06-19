@@ -14,7 +14,8 @@ Socionics : IM element
 from jungian.process import Process
 from jungian.attitude import Attitude
 
-class Function():
+
+class Function:
     """Generic cognitive function class"""
 
     def __init__(self, process: Process, attitude: Attitude):
@@ -32,16 +33,19 @@ class Function():
     def __hash__(self):
         return hash((self.process, self.attitude))
 
+
 def switch_attitude(f: Function) -> Function:
     """Return a new Function with the opposite attitude"""
     new_att = Attitude("e" if f.attitude.symbol == "i" else "i")
     return Function(f.process, new_att)
+
 
 def switch_process(f: Function) -> Function:
     """Toggle the process, within the same mode"""
     process_map = {"N": "S", "S": "N", "T": "F", "F": "T"}
     new_proc = Process(process_map[f.process.symbol])
     return Function(new_proc, f.attitude)
+
 
 # Predefined constants for convenience
 Ne = Function(Process("N"), Attitude("e"))

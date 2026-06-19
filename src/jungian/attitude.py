@@ -4,6 +4,7 @@ attitude.py
 
 from typing import Literal
 
+
 class Attitude:
     """Attitude class"""
 

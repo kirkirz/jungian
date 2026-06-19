@@ -1,16 +1,7 @@
 from jungian.type import Type
 from jungian.function import Function, Te, Ti, Fe, Fi
 from jungian.models.socionics.ModelA import pos
-
-# These should migrate to reinin.py later:
-def is_democratic(t: Type) -> bool:
-    """Return True if the Type is Democratic (Reinin trait)."""
-    return (t.s_n == "N") == (t.t_f == "T")
-
-def is_positivist(t: Type) -> bool:
-    """Return True if the Type is Democratic (Reinin trait)."""
-    return (t.s_n == "N") == (t.t_f == "T") == (t.e_i == "E")
-# up to here
+from jungian.systems.socionics.reinin import is_democratic, is_positivist
 
 def sign_wikisocion(t: Type, f: Function) -> str:
     """Sign as defined in wikisocion"""
@@ -19,9 +10,8 @@ def sign_wikisocion(t: Type, f: Function) -> str:
     if is_democratic(t):
         # Irrational +, Rational -
         return "+" if not is_rational else "-"
-    else:
-        # Irrational -, Rational +
-        return "-" if not is_rational else "+"
+    # Irrational -, Rational +
+    return "-" if not is_rational else "+"
 
 def sign_model_g(t: Type, f: Function) -> str:
     """
@@ -33,9 +23,6 @@ def sign_model_g(t: Type, f: Function) -> str:
     """
     position = pos(t, f)
     is_mental = position <= 4
-    
     if is_positivist(t):
         return "+" if is_mental else "-"
-    else:
-        return "-" if is_mental else "+"
-
+    return "-" if is_mental else "+"
