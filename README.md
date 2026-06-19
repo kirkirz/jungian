@@ -31,6 +31,6 @@ All socionics-related stuff should live inside `src/systems/socionics/` and `src
 ## MBTI
 * Beebe and Grant stacks
 ## Socionics
-* Reinin dichotomies (2/11 implemented, contributions are welcome!)
+* Reinin dichotomies (3/11 implemented, contributions are welcome!)
 * Model A, Model J stacks
 * Function signing (legacy and modern systems)
