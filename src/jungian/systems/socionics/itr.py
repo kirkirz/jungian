@@ -35,8 +35,25 @@ def semidual(t: Type) -> Type:
     new_aux = switch_attitude(aux)
     return from_dom_aux(new_dom, new_aux)
 
+def business(t: Type) -> Type:
+    """Business relation"""
+    dom, aux = to_dom_aux(t)
+    new_dom = switch_process(dom)
+    return from_dom_aux(new_dom, aux)
 
-def relation(t1: Type, t2: Type) -> str:
+def illusionary(t: Type) -> Type:
+    dom, aux = to_dom_aux(t)
+    new_dom = switch_attitude(dom)
+    new_aux = switch_process(switch_attitude(aux))
+    return from_dom_aux(new_dom, new_aux)
+
+def quasi_identity(t: Type) -> Type:
+    dom, aux = to_dom_aux(t)
+    new_dom = switch_attitude(aux)
+    new_aux = switch_attitude(dom)
+    return from_dom_aux(new_dom, new_aux)
+
+def relation(t1: Type, t2: Type):
     """Return the intertype relation name between two types."""
 
     if t1 == t2:
@@ -51,5 +68,11 @@ def relation(t1: Type, t2: Type) -> str:
         return kindred
     if semidual(t1) == t2:
         return semidual
+    if business(t1) == t2:
+        return business
+    if illusionary(t1) == t2:
+        return illusionary
+    if quasi_identity(t1) == t2:
+        return quasi_identity
 
     raise ValueError(f"No relation found between {t1} and {t2}")
