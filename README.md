@@ -36,3 +36,4 @@ All socionics-related stuff should live inside `src/systems/socionics/` and `src
 * Model A, Model J stacks
 * Function signing (legacy and modern systems)
 * Intertype relations (implemented 4/16)
+* Dimensionality
