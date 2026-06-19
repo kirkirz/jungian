@@ -28,6 +28,14 @@ def kindred(t: Type) -> Type:
     new_aux = switch_process(aux)
     return from_dom_aux(dom, new_aux)
 
+def semidual(t: Type) -> Type:
+    """Semidual relation"""
+    dom, aux = to_dom_aux(t)
+    new_dom = switch_process(switch_attitude(dom))
+    new_aux = switch_attitude(aux)
+    return from_dom_aux(new_dom, new_aux)
+
+
 def relation(t1: Type, t2: Type) -> str:
     """Return the intertype relation name between two types."""
 
@@ -41,4 +49,7 @@ def relation(t1: Type, t2: Type) -> str:
         return dual
     if kindred(t1) == t2:
         return kindred
+    if semidual(t1) == t2:
+        return semidual
+
     raise ValueError(f"No relation found between {t1} and {t2}")
