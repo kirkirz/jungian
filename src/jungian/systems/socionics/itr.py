@@ -22,6 +22,12 @@ def dual(t: Type) -> Type:
     new_aux = switch_attitude(switch_process(aux))
     return from_dom_aux(new_dom, new_aux)
 
+def kindred(t: Type) -> Type:
+    """Kindred relation"""
+    dom, aux = to_dom_aux(t)
+    new_aux = switch_process(aux)
+    return from_dom_aux(dom, new_aux)
+
 def relation(t1: Type, t2: Type) -> str:
     """Return the intertype relation name between two types."""
 
@@ -33,4 +39,6 @@ def relation(t1: Type, t2: Type) -> str:
         return conflict
     if dual(t1) == t2:
         return dual
+    if kindred(t1) == t2:
+        return kindred
     raise ValueError(f"No relation found between {t1} and {t2}")
