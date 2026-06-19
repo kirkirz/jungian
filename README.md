@@ -30,6 +30,7 @@ All socionics-related stuff should live inside `src/systems/socionics/` and `src
 * Psys function vectors
 ## MBTI
 * Beebe and Grant stacks
+* MBTI type codes
 ## Socionics
 * Reinin dichotomies (3/11 implemented, contributions are welcome!)
 * Model A, Model J stacks
