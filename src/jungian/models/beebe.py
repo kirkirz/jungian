@@ -13,3 +13,21 @@ def beebe_stack(t: Type) -> tuple[Function, Function, Function, Function]:
     p7 = switch_attitude(p3)
     p8 = switch_attitude(p4)
     return (p1, p2, p3, p4, p5, p6, p7, p8)
+
+# Neat API:
+def dominant(t : Type) -> Function:
+    return beebe_stack(t)[0]
+def auxiliary(t: Type) -> Function:
+    return beebe_stack(t)[1]
+def tertiary(t: Type) -> Function:
+    return beebe_stack(t)[2]
+def inferior(t: Type) -> Function:
+    return beebe_stack(t)[3]
+def nemesis(t : Type) -> Function:
+    return beebe_stack(t)[4]
+def senex(t : Type) -> Function:
+    return beebe_stack(t)[5]
+def trickster(t : Type) -> Function:
+    return beebe_stack(t)[6]
+def demon(t : Type) -> Function:
+    return beebe_stack(t)[7]
