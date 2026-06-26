@@ -1,7 +1,8 @@
 from jungian import Type, Function, switch_attitude, switch_process, to_dom_aux
 
+
 def beebe_stack(t: Type) -> tuple[Function, Function, Function, Function]:
-    """ Return the Beebe stack"""
+    """Return the Beebe stack"""
     dom, aux = to_dom_aux(t)
     p1 = dom
     p2 = aux
@@ -14,20 +15,35 @@ def beebe_stack(t: Type) -> tuple[Function, Function, Function, Function]:
     p8 = switch_attitude(p4)
     return (p1, p2, p3, p4, p5, p6, p7, p8)
 
+
 # Neat API:
-def dominant(t : Type) -> Function:
+def dominant(t: Type) -> Function:
     return beebe_stack(t)[0]
+
+
 def auxiliary(t: Type) -> Function:
     return beebe_stack(t)[1]
+
+
 def tertiary(t: Type) -> Function:
     return beebe_stack(t)[2]
+
+
 def inferior(t: Type) -> Function:
     return beebe_stack(t)[3]
-def nemesis(t : Type) -> Function:
+
+
+def nemesis(t: Type) -> Function:
     return beebe_stack(t)[4]
-def senex(t : Type) -> Function:
+
+
+def senex(t: Type) -> Function:
     return beebe_stack(t)[5]
-def trickster(t : Type) -> Function:
+
+
+def trickster(t: Type) -> Function:
     return beebe_stack(t)[6]
-def demon(t : Type) -> Function:
+
+
+def demon(t: Type) -> Function:
     return beebe_stack(t)[7]

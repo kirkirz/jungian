@@ -1,0 +1,14 @@
+{
+    "name": "Functional Cognitive Test",
+    "functions": ["Ti", "Te", "Fi", "Fe", "Ni", "Ne", "Si", "Se"],
+    "items": [
+        {"text": "I enjoy solving puzzles.", "mapping": {"Ti": 2, "Te": 1}},
+        {"text": "I focus on efficiency.", "mapping": {"Te": 2, "Ti": 1}},
+        {"text": "I follow my personal values.", "mapping": {"Fi": 2, "Fe": 1}},
+        {"text": "I care about group harmony.", "mapping": {"Fe": 2, "Fi": 1}},
+        {"text": "I have strong visions of the future.", "mapping": {"Ni": 2, "Ne": 1}},
+        {"text": "I love brainstorming new ideas.", "mapping": {"Ne": 2, "Ni": 1}},
+        {"text": "I appreciate tradition and routine.", "mapping": {"Si": 2, "Se": 1}},
+        {"text": "I live in the moment.", "mapping": {"Se": 2, "Si": 1}}
+    ]
+}

@@ -41,6 +41,7 @@ def xor(a: Vector, b: Vector) -> Vector:
     """Explicit XOR operation for Vectors"""
     return Vector(a ^ b)
 
+
 def vectorise(fn):
     """Convert Function to Vector"""
     if isinstance(fn, str):

@@ -1,28 +1,53 @@
+"""Reinin dichotomies"""
 from jungian.type import Type
+from jungian.dichotomy import Dichotomy
+
+# Migration to better API:
+E = Dichotomy("E", lambda t: t.e_i == "E")
+I = Dichotomy("I", lambda t: t.e_i == "I")
+N = Dichotomy("N", lambda t: t.s_n == "N")
+S = Dichotomy("S", lambda t: t.s_n == "S")
+T = Dichotomy("T", lambda t: t.t_f == "T")
+F = Dichotomy("F", lambda t: t.t_f == "F")
+j = Dichotomy("J", lambda t: t.j_p == "j")
+p = Dichotomy("P", lambda t: t.j_p == "p")
+Static = E * p
+Dynamic = ~Static
+Democratic = N * T
+Aristocratic = ~Democratic
+Positivist = E * N * T
+Negativist = ~Positivist
+
 # 3/11 dichotomies implemented as of now (excluding Jungian foundation)
 def is_democratic(t: Type) -> bool:
     """Return True if the Type is Democratic (Reinin trait)."""
     return (t.s_n == "N") == (t.t_f == "T")
 
+
 def is_aristocratic(t: Type) -> bool:
     """Return True if the Type is Aristocratic"""
     return not is_democratic(t)
+
 
 def is_positivist(t: Type) -> bool:
     """Return True if the Type is Positivist (Reinin trait)."""
     return (t.s_n == "N") == (t.t_f == "T") == (t.e_i == "E")
 
+
 def is_negativist(t: Type) -> bool:
     """Return True if the Type is Negativist"""
     return not is_positivist(t)
+
 
 def is_static(t: Type) -> bool:
     """Return True if the Type is Static"""
     return (t.e_i == "E") == (t.j_p == "p")
 
+
 def is_dynamic(t: Type) -> bool:
-    """Return True if the Type is Negativist"""
+    """Return True if the Type is Dynamic"""
     return not is_static(t)
+
 
 # These should be fixed/verified by someone:
 # def is_result(t: Type) -> bool:

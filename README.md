@@ -40,3 +40,12 @@ All socionics-related stuff should live inside `src/systems/socionics/` and `src
 * Function signing (legacy and modern systems)
 * Intertype relations (implemented 9/14)
 * Dimensionality
+# Lexical analysis
+* supports custom lexicon files
+* multiple weighted functions per token
+* phrase handling (supports fuzzy detection) and punctuation handling
+# Questionnaire engine
+* weighted questions with variants
+* supports both dichotomy-typing and function-typing through a unified mapping system, custom flexible JSON DSL (+ config-driven scoring interpreter for trait-based models)
+* CLI runner to use it interactively
+* Likert scoring + normalisation of scores, reverse scoring

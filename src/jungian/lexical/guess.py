@@ -1,4 +1,5 @@
 """Lexical analyzer"""
+
 import json
 import string
 from pathlib import Path
@@ -29,13 +30,11 @@ def load_lexicon(path: str | Path) -> tuple[dict, dict]:
         data = json.load(f)
 
     lexicon = {
-        k.lower(): normalize_items(v)
-        for k, v in data.get("lexicon", {}).items()
+        k.lower(): normalize_items(v) for k, v in data.get("lexicon", {}).items()
     }
 
     phrases = {
-        k.lower(): normalize_items(v)
-        for k, v in data.get("phrases", {}).items()
+        k.lower(): normalize_items(v) for k, v in data.get("phrases", {}).items()
     }
 
     return lexicon, phrases
@@ -77,8 +76,6 @@ def guess(text: str, lexicon: dict, phrases: dict) -> dict[str, int]:
 
 
 def guess_from_file(text: str, path: str | Path) -> dict[str, int]:
-    """Guess from file""
+    """Guess from file"""
     lexicon, phrases = load_lexicon(path)
     return guess(text, lexicon, phrases)
-
-print(guess_from_file("i think it depends", "lexicon.json"))

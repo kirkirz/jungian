@@ -1,0 +1,14 @@
+{
+    "name": "MBTI Style",
+    "type": "dichotomic",
+    "dimensions": {
+        "E/I": {"min": 0, "max": 20, "levels": [{"threshold": 33, "label": "Introverted"}, {"threshold": 67, "label": "Ambivert"}, {"threshold": 100, "label": "Extraverted"}]},
+        "S/N": {"min": 0, "max": 20, "levels": [{"threshold": 33, "label": "Sensing"}, {"threshold": 67, "label": "Balanced"}, {"threshold": 100, "label": "Intuitive"}]},
+        "T/F": {"min": 0, "max": 20, "levels": [{"threshold": 33, "label": "Thinking"}, {"threshold": 67, "label": "Balanced"}, {"threshold": 100, "label": "Feeling"}]},
+        "J/P": {"min": 0, "max": 20, "levels": [{"threshold": 33, "label": "Perceiving"}, {"threshold": 67, "label": "Balanced"}, {"threshold": 100, "label": "Judging"}]}
+    },
+    "items": [
+        {"text": "I enjoy being the center of attention.", "target": "E/I", "reverse": false},
+        {"text": "I prefer one-on-one conversations.", "target": "E/I", "reverse": true}
+    ]
+}
