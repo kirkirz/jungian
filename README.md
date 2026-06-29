@@ -1,5 +1,8 @@
 Jungian.py, a theory-agnostic Python library for working with Jungian typology).
 
+Official repo:
+https://github.com/kirkirz/jungian
+
 It's available on PyPI (although without latest features):  
 `pip install jungian`
 
