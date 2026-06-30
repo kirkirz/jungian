@@ -41,7 +41,7 @@ All socionics-related stuff should live inside `src/systems/socionics/` and `src
 * Reinin dichotomies (3/11 implemented, contributions are welcome!)
 * Model A, Model J stacks
 * Function signing (legacy and modern systems)
-* Intertype relations (implemented 9/14)
+* Intertype relations (implemented 12/14)
 * Dimensionality
 # Lexical analysis
 * supports custom lexicon files

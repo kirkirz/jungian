@@ -64,6 +64,30 @@ def quasi_identity(t: Type) -> Type:
     return from_dom_aux(new_dom, new_aux)
 
 
+def contrary(t: Type) -> Type:
+    """Contrary relation"""
+    dom, aux = to_dom_aux(t)
+    new_dom = switch_attitude(dom)
+    new_aux = switch_attitude(aux)
+    return from_dom_aux(new_dom, new_aux)
+
+
+def superego(t: Type) -> Type:
+    """Super-ego relation: 1<->3, 2<->4"""
+    dom, aux = to_dom_aux(t)
+    new_dom = switch_process(dom)
+    new_aux = switch_process(aux)
+    return from_dom_aux(new_dom, new_aux)
+
+
+def activity(t: Type) -> Type:
+    """Activity relation"""
+    dom, aux = to_dom_aux(t)
+    new_dom = switch_attitude(switch_process(aux))
+    new_aux = switch_attitude(switch_process(dom))
+    return from_dom_aux(new_dom, new_aux)
+
+
 def relation(t1: Type, t2: Type):
     """Return the intertype relation name between two types."""
 
@@ -85,5 +109,11 @@ def relation(t1: Type, t2: Type):
         return illusionary
     if quasi_identity(t1) == t2:
         return quasi_identity
+    if contrary(t1) == t2:
+        return contrary
+    if superego(t1) == t2:
+        return superego
+    if activity(t1) == t2:
+        return activity
 
     raise ValueError(f"No relation found between {t1} and {t2}")

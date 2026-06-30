@@ -4,6 +4,7 @@ from typing import Any
 
 
 def load_quest(path: str | Path) -> dict[str, Any]:
+    """Load a questionnaire"""
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
