@@ -56,3 +56,12 @@ class Dichotomy:
 
     def __str__(self) -> str:
         return self.name
+
+E = Dichotomy("E", lambda t: t.e_i == "E")
+I = Dichotomy("I", lambda t: t.e_i == "I")
+N = Dichotomy("N", lambda t: t.s_n == "N")
+S = Dichotomy("S", lambda t: t.s_n == "S")
+T = Dichotomy("T", lambda t: t.t_f == "T")
+F = Dichotomy("F", lambda t: t.t_f == "F")
+j = Dichotomy("J", lambda t: t.j_p == "j")
+p = Dichotomy("P", lambda t: t.j_p == "p")

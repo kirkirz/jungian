@@ -3,7 +3,8 @@ Jungian.py, a theory-agnostic Python library for working with Jungian typology).
 Official repo:
 https://github.com/kirkirz/jungian
 
-It's available on PyPI (although without latest features):  
+[![PyPI version](https://badge.fury.io/py/jungian.svg)](https://badge.fury.io/py/jungian)
+It's available on PyPI:  
 `pip install jungian`
 
 This was initially built for my own system (PSys), but we will gladly support other systems.  
@@ -38,11 +39,12 @@ All socionics-related stuff should live inside `src/systems/socionics/` and `src
 * Beebe and Grant stacks
 * MBTI type codes
 ## Socionics
-* Reinin dichotomies (3/11 implemented, contributions are welcome!)
+* Reinin dichotomies
 * Model A, Model J stacks
 * Function signing (legacy and modern systems)
 * Intertype relations (implemented 12/14)
 * Dimensionality
+* Small groups
 # Lexical analysis
 * supports custom lexicon files
 * multiple weighted functions per token
