@@ -87,6 +87,35 @@ def activity(t: Type) -> Type:
     new_aux = switch_attitude(switch_process(dom))
     return from_dom_aux(new_dom, new_aux)
 
+def benefactor(t: Type) -> Type:
+    """Benefactor relation: 1→8, 2→5. Returns the benefactor"""
+    dom, aux = to_dom_aux(t)
+    new_dom = switch_attitude(aux)                      # position 8
+    new_aux = switch_attitude(switch_process(dom))      # position 5
+    return from_dom_aux(new_dom, new_aux)
+
+
+def beneficiary(t: Type) -> Type:
+    """Beneficiary relation: 1→6, 2→7. Returns the beneficiary"""
+    dom, aux = to_dom_aux(t)
+    new_dom = switch_attitude(switch_process(aux))      # position 6
+    new_aux = switch_attitude(dom)                      # position 7
+    return from_dom_aux(new_dom, new_aux)
+
+def supervisor(t: Type) -> Type:
+    """Supervisor relation: 1→4, 2→1. Returns the supervisor"""
+    dom, aux = to_dom_aux(t)
+    new_dom = switch_process(aux)      # position 4
+    new_aux = dom                      # position 1
+    return from_dom_aux(new_dom, new_aux)
+
+
+def supervisee(t: Type) -> Type:
+    """Supervisee relation: 1→2, 2→3. Returns the supervisee"""
+    dom, aux = to_dom_aux(t)
+    new_dom = aux                      # position 2
+    new_aux = switch_process(dom)      # position 3
+    return from_dom_aux(new_dom, new_aux)
 
 def relation(t1: Type, t2: Type):
     """Return the intertype relation name between two types."""
@@ -115,5 +144,13 @@ def relation(t1: Type, t2: Type):
         return superego
     if activity(t1) == t2:
         return activity
+    if benefactor(t1) == t2:
+        return benefactor
+    if beneficiary(t1) == t2:
+        return beneficiary
+    if supervisor(t1) == t2:
+        return supervisor
+    if supervisee(t1) == t2:
+        return supervisee
 
     raise ValueError(f"No relation found between {t1} and {t2}")
