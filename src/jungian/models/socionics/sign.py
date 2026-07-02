@@ -1,7 +1,7 @@
 from jungian.type import Type
 from jungian.function import Function, Te, Ti, Fe, Fi
 from jungian.models.socionics.ModelA import pos
-from jungian.systems.socionics.reinin import Democratic, Positivist
+from jungian.models.socionics.reinin import Democratic, Positivist
 
 
 def sign_wikisocion(t: Type, f: Function) -> str:

@@ -1,6 +1,6 @@
 """Small groups for socionics"""
 from typing import TYPE_CHECKING
-from jungian.systems.socionics.reinin import *
+from jungian.models.socionics.reinin import *
 
 if TYPE_CHECKING:
     from jungian.type import Type
@@ -45,13 +45,13 @@ Fp = F & p
 
 # Romance styles
 # Se in Ego block
-Agressor = (S & T & Static) | (S & F & Static)
+Aggressor = S & Static
 # Ne in Ego block
-Childlike = (N & T & Static) | (N & F & Static)
+Childlike = N & Static
 # Si in Ego block
-Caregiver = (S & T & Dynamic) | (S & F & Dynamic)
+Caregiver = S & Dynamic
 # Ni in Ego block
-Victim = (N & T & Dynamic) | (N & F & Dynamic)
+Victim = N & Dynamic
 
 # Quadras
 Alpha = Reasonable & Subjectivist

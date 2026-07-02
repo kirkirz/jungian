@@ -1,15 +1,15 @@
-# tests/test_quest.py
+"""Demonstrate the questionnaire engine with a sample questionnaire."""
 
-from pathlib import Path
 import sys
+from pathlib import Path
 
+# Add src/ to Python path so jungian can be imported
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from jungian.questionnaires.quest import load_quest, score_quest, normalize_scores
 
 
-def test_quest():
-    # Get the project root
+def main():
     project_root = Path(__file__).parent.parent
 
     # Samples are inside the package
@@ -29,8 +29,7 @@ def test_quest():
 
     print("Raw:", raw)
     print("Normalized:", norm)
-    print("All tests passed!")
 
 
 if __name__ == "__main__":
-    test_quest()
+    main()
