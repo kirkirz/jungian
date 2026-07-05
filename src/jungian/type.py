@@ -9,7 +9,7 @@ instead of MBTI's J/P for canonical representation.
 """
 
 from dataclasses import dataclass
-from typing import Literal
+from typing import Literal, cast
 from jungian.function import Function
 from jungian.process import Process
 from jungian.attitude import Attitude
@@ -134,3 +134,39 @@ ESFp = Type("E", "S", "F", "p")
 ISFp = Type("I", "S", "F", "p")
 ESFj = Type("E", "S", "F", "j")
 ISFj = Type("I", "S", "F", "j")
+
+# MBTI type codes:
+ENTP = ENTp
+INTP = INTj
+ENTJ = ENTj
+INTJ = INTp
+ENFP = ENFp
+INFP = INFj
+ENFJ = ENFj
+INFJ = INFp
+ESTP = ESTp
+ISTP = ISTj
+ESTJ = ESTj
+ISTJ = ISTp
+ESFP = ESFp
+ISFP = ISFj
+ESFJ = ESFj
+ISFJ = ISFp
+
+# Classical socionics type codes:
+ILE = ENTp
+LII = INTj
+ESE = ESFj
+EII = INFj
+SLE = ESTp
+LSI = ISTj
+SEE = ESFp
+ESI = ISFj
+LIE = ENTj
+ILI = INTp
+EIE = ENFj
+IEI = INFp
+IEE = ENFp
+SLI = ISTp
+SEI = ISFp
+LSE = ESTj
