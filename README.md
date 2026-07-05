@@ -20,8 +20,7 @@ Contributions are very welcome.
 
 Simulations will live inside `src/models/psys/`
 # Features
-**Systems supported**: 3  
-**Models supported**: 4
+**Models supported**: PSys, MBTI, Socionics (Models A, J)
 ## Psys
 * Psys function vectors
 ## MBTI
