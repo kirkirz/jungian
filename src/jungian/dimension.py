@@ -3,14 +3,13 @@ dimension.py – Continuous trait representation.
 """
 
 from dataclasses import dataclass
-from typing import Optional
 
 @dataclass
 class Dimension:
     """Dimension class"""
 
     name: str
-    value: Optional[float] = None
+    value: float = 0.5
 
     def __post_init__(self) -> None:
         if not 0.0 <= self.value <= 1.0:
@@ -59,7 +58,7 @@ def signed_deviation(d: Dimension) -> float:
     return d.value - 0.5
 
 
-def bipolar_consistency(a: float, b: float) -> float:
+def bipolar_consistency(a: Dimension, b: Dimension) -> float:
     """
     Validate a pair of opposing raw scores (0.0 to 1.0).
 
