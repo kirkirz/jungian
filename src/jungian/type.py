@@ -9,7 +9,7 @@ instead of MBTI's J/P for canonical representation.
 """
 
 from dataclasses import dataclass
-from typing import Literal, cast
+from typing import Literal
 from jungian.function import Function
 from jungian.process import Process
 from jungian.attitude import Attitude

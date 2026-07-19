@@ -3,8 +3,8 @@
 import argparse
 import json
 from pathlib import Path
-from .quest import load_quest, score_quest, normalize_scores, get_scale_config
-from .quest_fhir import questionnaire_to_fhir, response_to_fhir
+from jungian.questionnaires.quest import load_quest, score_quest, normalize_scores, get_scale_config
+from jungian.questionnaires.quest_fhir import questionnaire_to_fhir, response_to_fhir
 
 DEFAULT_URL = "http://example.org"
 

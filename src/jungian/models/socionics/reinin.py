@@ -1,6 +1,5 @@
 """Reinin dichotomies"""
 
-from jungian.type import Type
 from jungian.dichotomy import Dichotomy, E, N, T, p, I, S, F, j
 
 Static = E * p

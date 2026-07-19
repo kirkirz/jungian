@@ -1,9 +1,11 @@
 """Small groups for socionics"""
-from typing import TYPE_CHECKING
-from jungian.models.socionics.reinin import *
-
-if TYPE_CHECKING:
-    from jungian.type import Type
+from jungian.models.socionics.reinin import (
+    N, S, T, F, E, I, j, p,
+    Static, Dynamic,
+    Reasonable, Subjectivist,
+    Resolute, Objectivist,
+)
+from jungian.type import Type
 
 # Clubs
 NT = Researchers = N & T

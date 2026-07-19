@@ -2,7 +2,7 @@
 
 import datetime
 from typing import Any, List
-from .quest import get_scale_config
+from jungian.questionnaires.quest import get_scale_config
 
 EXT_ORDINAL = "http://hl7.org/fhir/StructureDefinition/ordinalValue"
 

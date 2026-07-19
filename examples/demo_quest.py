@@ -1,11 +1,6 @@
 """Demonstrate the questionnaire engine with a sample questionnaire."""
 
-import sys
 from pathlib import Path
-
-# Add src/ to Python path so jungian can be imported
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
-
 from jungian.questionnaires.quest import load_quest, score_quest, normalize_scores
 
 
