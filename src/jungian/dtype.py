@@ -1,10 +1,10 @@
-"""Dimension alternative to Type (Experimental)"""
+"""Trait alternative to Type (Experimental)"""
 
-from jungian.dimension import Dimension
+from jungian.trait import Trait
 
 Jungian = (
-    Dimension("I/E"),
-    Dimension("N/S"),
-    Dimension("T/F"),
-    Dimension("j/p"),
+    Trait("I/E"),
+    Trait("N/S"),
+    Trait("T/F"),
+    Trait("j/p"),
 )

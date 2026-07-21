@@ -1,10 +1,10 @@
 """Big Five implementation"""
-from jungian.dimension import Dimension
+from jungian.trait import Trait
 
 BigFive = (
-    Dimension("Openness"),
-    Dimension("Conscientiousness"),
-    Dimension("Extraversion"),
-    Dimension("Agreeableness"),
-    Dimension("Neuroticism"),
+    Trait("Openness"),
+    Trait("Conscientiousness"),
+    Trait("Extraversion"),
+    Trait("Agreeableness"),
+    Trait("Neuroticism"),
 )
