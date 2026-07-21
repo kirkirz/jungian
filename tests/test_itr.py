@@ -6,19 +6,43 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from jungian.type import (
-    ENTp, INTp, ENFp, INFp,
-    ESTp, ISTp, ESFp, ISFp,
-    ENTj, INTj, ENFj, INFj,
-    ESTj, ISTj, ESFj, ISFj,
+    ENTp,
+    INTp,
+    ENFp,
+    INFp,
+    ESTp,
+    ISTp,
+    ESFp,
+    ISFp,
+    ENTj,
+    INTj,
+    ENFj,
+    INFj,
+    ESTj,
+    ISTj,
+    ESFj,
+    ISFj,
 )
 from jungian.models.socionics.itr import identical, relation
 
 
 ALL_TYPES = [
-    ENTp, INTp, ENFp, INFp,
-    ESTp, ISTp, ESFp, ISFp,
-    ENTj, INTj, ENFj, INFj,
-    ESTj, ISTj, ESFj, ISFj,
+    ENTp,
+    INTp,
+    ENFp,
+    INFp,
+    ESTp,
+    ISTp,
+    ESFp,
+    ISFp,
+    ENTj,
+    INTj,
+    ENFj,
+    INFj,
+    ESTj,
+    ISTj,
+    ESFj,
+    ISFj,
 ]
 
 

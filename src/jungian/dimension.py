@@ -4,9 +4,11 @@ dimension.py – Continuous trait representation.
 
 from dataclasses import dataclass
 
+
 @dataclass(frozen=True)
 class Dimension:
     """A scalar value in [0, 1]."""
+
     value: float = 0.5
 
     def __post_init__(self) -> None:

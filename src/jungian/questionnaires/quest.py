@@ -21,10 +21,14 @@ def validate_quest(data: dict[str, Any]) -> None:
     required = ["name", "items"]
     for field in required:
         if field not in data:
-            raise ValueError(f"Malformed questionnaire: Missing required '{field}' field.")
+            raise ValueError(
+                f"Malformed questionnaire: Missing required '{field}' field."
+            )
 
     if "dimensions" not in data and "functions" not in data:
-        raise ValueError("Questionnaire must define either 'dimensions' or 'functions' for scoring.")
+        raise ValueError(
+            "Questionnaire must define either 'dimensions' or 'functions' for scoring."
+        )
 
     if not isinstance(data["items"], list) or len(data["items"]) == 0:
         raise ValueError("Questionnaire 'items' must be a non-empty list.")
@@ -33,7 +37,13 @@ def validate_quest(data: dict[str, Any]) -> None:
 def get_scale_config(data: dict[str, Any]) -> ScaleConfig:
     """Extracts scale configuration from JSON or falls back to a standard 0-4 scale."""
     scale = data.get("scale", {})
-    fallback_labels = ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+    fallback_labels = [
+        "Strongly Disagree",
+        "Disagree",
+        "Neutral",
+        "Agree",
+        "Strongly Agree",
+    ]
     return {
         "min": int(scale.get("min", 0)),
         "max": int(scale.get("max", 4)),
@@ -72,8 +82,7 @@ def load_quest(path: str | Path) -> dict[str, Any]:
 
     if "dimensions" in data:
         data["_meta"] = {
-            k: {"min": v["min"], "max": v["max"]}
-            for k, v in data["dimensions"].items()
+            k: {"min": v["min"], "max": v["max"]} for k, v in data["dimensions"].items()
         }
     else:
         max_weights = _compute_max_weights(data, max_raw_val)

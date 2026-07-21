@@ -3,7 +3,12 @@
 import argparse
 import json
 from pathlib import Path
-from jungian.questionnaires.quest import load_quest, score_quest, normalize_scores, get_scale_config
+from jungian.questionnaires.quest import (
+    load_quest,
+    score_quest,
+    normalize_scores,
+    get_scale_config,
+)
 from jungian.questionnaires.quest_fhir import questionnaire_to_fhir, response_to_fhir
 
 DEFAULT_URL = "http://example.org"
@@ -113,6 +118,4 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    run_quest(
-        quest_path=args.file, export_fhir=args.fhir, base_domain=args.domain
-    )
+    run_quest(quest_path=args.file, export_fhir=args.fhir, base_domain=args.domain)

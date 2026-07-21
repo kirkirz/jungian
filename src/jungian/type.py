@@ -117,6 +117,7 @@ def to_dom_aux(t: Type) -> tuple[Function, Function]:
     )
 
 
+# fmt: off
 # Type aliases:
 ENTp = Type("E", "N", "T", "p")
 INTp = Type("I", "N", "T", "p")
@@ -134,6 +135,7 @@ ESFp = Type("E", "S", "F", "p")
 ISFp = Type("I", "S", "F", "p")
 ESFj = Type("E", "S", "F", "j")
 ISFj = Type("I", "S", "F", "j")
+# fmt: on
 
 # MBTI type codes:
 ENTP = ENTp

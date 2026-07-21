@@ -4,8 +4,10 @@ attitude.py
 
 from enum import StrEnum
 
+
 class Attitude(StrEnum):
     """Attitude class"""
+
     I = "i"
     E = "e"
 

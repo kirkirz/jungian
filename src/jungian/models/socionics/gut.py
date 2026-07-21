@@ -4,24 +4,13 @@ Source:
 https://web.archive.org/web/20020615231104/https://ru.laser.ru/authors/ss/gut/formalization.htm
 """
 
+# fmt: off
 from jungian.function import Ne, Ni, Se, Si, Te, Ti, Fe, Fi
 from jungian.type import (
-    ENTp,
-    ISFp,
-    ESFj,
-    INTj,
-    ENFj,
-    ISTj,
-    ESTp,
-    INFp,
-    ESFp,
-    INTp,
-    ENTj,
-    ISFj,
-    ESTj,
-    INFj,
-    ENFp,
-    ISTp,
+    ENTp, ISFp, ESFj, INTj,
+    ENFj, ISTj, ESTp, INFp,
+    ESFp, INTp, ENTj, ISFj,
+    ESTj, INFj, ENFp, ISTp,
 )
 from jungian.models.socionics.itr import (
     identical,

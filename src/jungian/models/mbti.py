@@ -6,6 +6,7 @@ from jungian import Type
 # It does so-called J/P switch
 # That means that rational introverts (j) are perceivers (P)
 # and irrational introverts (p) are judgers (J)
+# fmt: off
 MBTI_MAP = {
     "ENTP": Type("E", "N", "T", "p"),
     "INTP": Type("I", "N", "T", "j"),
@@ -24,6 +25,7 @@ MBTI_MAP = {
     "ESFJ": Type("E", "S", "F", "j"),
     "ISFJ": Type("I", "S", "F", "p"),
 }
+# fmt: on
 
 
 def from_mbti(code: str) -> Type:

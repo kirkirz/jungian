@@ -35,13 +35,14 @@ Farsighted = ~Carefree  # aka Cautious
 Yielding = E * T
 Obstinate = ~Yielding
 
+
 def order(d: Dichotomy) -> int:
     """
     Return the order of a Reinin dichotomy.
-    
+
     The order is the number of Jungian dichotomies (E, I, N, S, T, F, j, p)
     that compose it.
-    
+
     Examples:
         >>> order(Static)    # E * p → 2
         2
@@ -52,7 +53,9 @@ def order(d: Dichotomy) -> int:
     """
     return d.name.count("*") + 1
 
-REININ_TRAITS = [
+
+# fmt: off
+REININ_TRAITS = (
     Static, Dynamic,
     Democratic, Aristocratic,
     Positivist, Negativist,
@@ -66,4 +69,5 @@ REININ_TRAITS = [
     Yielding, Obstinate,
     # Jungian basis:
     E, I, N, S, T, F, j, p
-]
+)
+# fmt: on

@@ -1,4 +1,5 @@
 """Big Five implementation"""
+
 from jungian.trait import Trait
 
 BigFive = (

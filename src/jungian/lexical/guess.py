@@ -57,7 +57,7 @@ def guess(text: str, lexicon: dict, phrases: dict) -> dict[str, int]:
 
     # 1. Phrase matching (FIXED: fuzzy, no regex brittleness)
     for phrase, mappings in phrases.items():
-        if re.search(r'\b' + re.escape(phrase) + r'\b', text_lower):
+        if re.search(r"\b" + re.escape(phrase) + r"\b", text_lower):
             boost = 1
 
             # optional reinforcement if punctuation doesn't break it

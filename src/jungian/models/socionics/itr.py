@@ -1,6 +1,10 @@
 """Classical intertype relations from socionics"""
 
+from functools import lru_cache
+from typing import Callable
 from jungian import Type, to_dom_aux, from_dom_aux, switch_process, switch_attitude
+
+Relation = Callable[[Type], Type]
 
 
 def identical(ty: Type) -> Type:
@@ -87,70 +91,70 @@ def activity(t: Type) -> Type:
     new_aux = switch_attitude(switch_process(dom))
     return from_dom_aux(new_dom, new_aux)
 
+
 def benefactor(t: Type) -> Type:
     """Benefactor relation: 1→8, 2→5. Returns the benefactor"""
     dom, aux = to_dom_aux(t)
-    new_dom = switch_attitude(aux)                      # position 8
-    new_aux = switch_attitude(switch_process(dom))      # position 5
+    new_dom = switch_attitude(aux)  # position 8
+    new_aux = switch_attitude(switch_process(dom))  # position 5
     return from_dom_aux(new_dom, new_aux)
 
 
 def beneficiary(t: Type) -> Type:
     """Beneficiary relation: 1→6, 2→7. Returns the beneficiary"""
     dom, aux = to_dom_aux(t)
-    new_dom = switch_attitude(switch_process(aux))      # position 6
-    new_aux = switch_attitude(dom)                      # position 7
+    new_dom = switch_attitude(switch_process(aux))  # position 6
+    new_aux = switch_attitude(dom)  # position 7
     return from_dom_aux(new_dom, new_aux)
+
 
 def supervisor(t: Type) -> Type:
     """Supervisor relation: 1→4, 2→1. Returns the supervisor"""
     dom, aux = to_dom_aux(t)
-    new_dom = switch_process(aux)      # position 4
-    new_aux = dom                      # position 1
+    new_dom = switch_process(aux)  # position 4
+    new_aux = dom  # position 1
     return from_dom_aux(new_dom, new_aux)
 
 
 def supervisee(t: Type) -> Type:
     """Supervisee relation: 1→2, 2→3. Returns the supervisee"""
     dom, aux = to_dom_aux(t)
-    new_dom = aux                      # position 2
-    new_aux = switch_process(dom)      # position 3
+    new_dom = aux  # position 2
+    new_aux = switch_process(dom)  # position 3
     return from_dom_aux(new_dom, new_aux)
 
-def relation(t1: Type, t2: Type):
-    """Return the intertype relation name between two types."""
 
-    if t1 == t2:
-        return identical
-    if mirror(t1) == t2:
-        return mirror
-    if conflict(t1) == t2:
-        return conflict
-    if dual(t1) == t2:
-        return dual
-    if kindred(t1) == t2:
-        return kindred
-    if semidual(t1) == t2:
-        return semidual
-    if business(t1) == t2:
-        return business
-    if illusionary(t1) == t2:
-        return illusionary
-    if quasi_identity(t1) == t2:
-        return quasi_identity
-    if contrary(t1) == t2:
-        return contrary
-    if superego(t1) == t2:
-        return superego
-    if activity(t1) == t2:
-        return activity
-    if benefactor(t1) == t2:
-        return benefactor
-    if beneficiary(t1) == t2:
-        return beneficiary
-    if supervisor(t1) == t2:
-        return supervisor
-    if supervisee(t1) == t2:
-        return supervisee
+RELATIONS = (
+    identical,
+    mirror,
+    conflict,
+    dual,
+    kindred,
+    semidual,
+    business,
+    illusionary,
+    quasi_identity,
+    contrary,
+    superego,
+    activity,
+    benefactor,
+    beneficiary,
+    supervisor,
+    supervisee,
+)
 
-    raise ValueError(f"No relation found between {t1} and {t2}")
+
+def relate(registry: tuple[Relation, ...]):
+    """Factory that returns a memoized dispatcher for intertype relations."""
+
+    @lru_cache
+    def lookup(t1: Type, t2: Type) -> Relation:
+        for rel in registry:
+            if rel(t1) == t2:
+                return rel
+        raise LookupError(f"No relation found between {t1} and {t2}")
+
+    return lookup
+
+
+relation = relate(RELATIONS)

@@ -1,4 +1,5 @@
 """Grant stack derivation module"""
+
 from jungian import Type, Function, switch_attitude, switch_process, to_dom_aux
 
 

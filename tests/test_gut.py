@@ -10,19 +10,44 @@ src_path = repo_root / "src"
 sys.path.insert(0, str(src_path))
 
 from jungian.type import (
-    ENTp, INTp, ENFp, INFp,
-    ESTp, ISTp, ESFp, ISFp,
-    ENTj, INTj, ENFj, INFj,
-    ESTj, ISTj, ESFj, ISFj,
-    Type
+    ENTp,
+    INTp,
+    ENFp,
+    INFp,
+    ESTp,
+    ISTp,
+    ESFp,
+    ISFp,
+    ENTj,
+    INTj,
+    ENFj,
+    INFj,
+    ESTj,
+    ISTj,
+    ESFj,
+    ISFj,
+    Type,
 )
 from jungian.models.socionics.itr import (
-    identical, mirror, activity, conflict, superego,
-    dual, contrary, quasi_identity, kindred, business,
-    semidual, illusionary, benefactor, beneficiary,
-    supervisor, supervisee
+    identical,
+    mirror,
+    activity,
+    conflict,
+    superego,
+    dual,
+    contrary,
+    quasi_identity,
+    kindred,
+    business,
+    semidual,
+    illusionary,
+    benefactor,
+    beneficiary,
+    supervisor,
+    supervisee,
 )
 from jungian.models.socionics.gut import GUT_TYPES, RELATION_TO_GUT
+
 
 # ---- Helper: apply Gut matrix ----
 def vector_to_type(vec: tuple[int, int, int, int]) -> Type:
@@ -41,29 +66,55 @@ def apply_relation(t: Type, relation_func) -> Type:
     vec = GUT_TYPES[t]
     matrix = RELATION_TO_GUT[relation_func]
 
+    # fmt: off
     result = (
         vec[0]*matrix[0][0] + vec[1]*matrix[1][0] + vec[2]*matrix[2][0] + vec[3]*matrix[3][0],
         vec[0]*matrix[0][1] + vec[1]*matrix[1][1] + vec[2]*matrix[2][1] + vec[3]*matrix[3][1],
         vec[0]*matrix[0][2] + vec[1]*matrix[1][2] + vec[2]*matrix[2][2] + vec[3]*matrix[3][2],
         vec[0]*matrix[0][3] + vec[1]*matrix[1][3] + vec[2]*matrix[2][3] + vec[3]*matrix[3][3],
     )
+    # fmt: on
     return vector_to_type(result)
 
 
 # ---- All 16 types ----
 ALL_TYPES = [
-    ENTp, INTp, ENFp, INFp,
-    ESTp, ISTp, ESFp, ISFp,
-    ENTj, INTj, ENFj, INFj,
-    ESTj, ISTj, ESFj, ISFj,
+    ENTp,
+    INTp,
+    ENFp,
+    INFp,
+    ESTp,
+    ISTp,
+    ESFp,
+    ISFp,
+    ENTj,
+    INTj,
+    ENFj,
+    INFj,
+    ESTj,
+    ISTj,
+    ESFj,
+    ISFj,
 ]
 
 # ---- All 16 relations ----
 ALL_RELATIONS = [
-    identical, mirror, activity, conflict, superego,
-    dual, contrary, quasi_identity, kindred, business,
-    semidual, illusionary, benefactor, beneficiary,
-    supervisor, supervisee
+    identical,
+    mirror,
+    activity,
+    conflict,
+    superego,
+    dual,
+    contrary,
+    quasi_identity,
+    kindred,
+    business,
+    semidual,
+    illusionary,
+    benefactor,
+    beneficiary,
+    supervisor,
+    supervisee,
 ]
 
 
